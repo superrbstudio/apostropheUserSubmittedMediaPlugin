@@ -1,0 +1,42 @@
+See http://apostrophenow.org/ for everything there is to know about Apostrophe.
+
+This plugin allows ordinary folks to submit images to your site in a managed fashion. Images in GIF, JPEG and PNG format are accepted, assigned to the category of your choice (see "you can configure things" below), and marked as not yet approved. You can visit a handy approval page to approve them by checking a box. Once you do so they are visible on any media library page that displays the category. It's nice.
+
+When adding to an existing project you need to:
+
+* Run apostrophe:migrate
+* Run doctrine:build --all-classes
+
+You need routes like these (the names are fixed):
+
+# Leave me unsecured, or secure me to some degree, up to you
+aUserSubmittedMedia_submit:
+  url: /postcard
+  param: { module: aUserSubmittedMedia, action: submit }
+
+# Secure me to those who are allowed to approve submissions
+aUserSubmittedMedia_unapproved:
+  url: /postcard/unapproved
+  param: { module: aUserSubmittedMedia, action: unapproved }
+
+# Secure me to those who are allowed to approve submissions
+aUserSubmittedMedia_approve:
+  url: /postcard/approve
+  param: { module: aUserSubmittedMedia, action: approve }
+
+You can configure things. Here are the defaults:
+
+all:
+  aUserSubmittedMedia:
+    category: 'User-Submitted'
+    afterSubmission: @homepage
+    # 500 pixels wide on approval form page
+    approvalWidth: 500
+    # Flex height on approval form page
+    approvalHeight: false
+    # Where the cancel button for a new submission goes
+    cancel: '@homepage'
+    # Dimensions of media on the unapproved submissions page
+    unapprovedWidth: 300
+    unapprovedHeight: false
+

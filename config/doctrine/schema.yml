@@ -1,0 +1,8 @@
+aMediaItem:
+  columns:
+    approved:
+      type: boolean
+      # Default is true because media not submitted through this
+      # plugin shouldn't change their behavior
+      default: true
+
