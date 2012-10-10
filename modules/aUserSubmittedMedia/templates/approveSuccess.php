@@ -1,8 +1,13 @@
 <?php
+  use_helper('a');
+
   // Compatible with sf_escaping_strategy: true
   $form = isset($form) ? $sf_data->getRaw('form') : null;
   $popularTags = isset($popularTags) ? $sf_data->getRaw('popularTags') : array();
   $allTags = isset($allTags) ? $sf_data->getRaw('allTags') : array();
+  
+  $options = array('choose-one' => 'Select One', 'add' => '+ New Category');
+  a_js_call('aMultipleSelect(?, ?)', '.a_media_item_categories_list', $options);
 ?>
 
 <p>
