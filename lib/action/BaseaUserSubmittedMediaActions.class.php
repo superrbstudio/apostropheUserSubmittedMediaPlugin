@@ -72,4 +72,17 @@ class BaseaUserSubmittedMediaActions extends sfActions
       }
     }
   }
+  
+  public function executeDelete(sfWebRequest $request)
+  {
+    // get the item
+    $this->mediaItem = Doctrine::getTable('aMediaItem')->find($request->getParameter('id'));
+    $this->forward404Unless($this->mediaItem);
+    
+//    var_dump('deleting this shit: '.$this->mediaItem->getId()); exit;
+    // delete the item
+    $this->mediaItem->delete();
+    
+    return $this->redirect('@aUserSubmittedMedia_unapproved');
+  }
 }

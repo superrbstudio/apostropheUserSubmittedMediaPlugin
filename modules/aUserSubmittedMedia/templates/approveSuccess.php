@@ -11,12 +11,14 @@
 ?>
 
 <p>
-	<img src="<?php echo $mediaItem->getImgSrcUrl(sfConfig::get('aUserSubmittedMedia_approvalWidth', 500), sfConfig::get('aUserSubmittedMedia_approvalHeight', false), 's') ?>" />
+    <img src="<?php echo $mediaItem->getImgSrcUrl(sfConfig::get('aUserSubmittedMedia_approvalWidth', 500), sfConfig::get('aUserSubmittedMedia_approvalHeight', false), 's') ?>" />
 </p>
 
 <form enctype="multipart/form-data" method="POST" action="<?php url_for('@aUserSubmittedMedia_submit') ?>">
-	<?php echo $form ?>
-	<div class="a-form-row">
-		<input type="submit" value="Save" /> <a href="<?php echo url_for(sfConfig::get('aUserSubmittedMedia_cancel', '@homepage')) ?>">Cancel</a>
-	</div>
+    <?php echo $form ?>
+    <div class="a-form-row">
+        <input type="submit" value="Save" /> 
+        <?php echo link_to('<span class="icon"></span>'.__("Delete", null, 'apostrophe'), "@aUserSubmittedMedia_delete?id=" . $mediaItem->getId(), array("confirm" => __('Are you sure? This operation can not be undone.', null, 'apostrophe'), 'class' => 'a-btn icon a-delete alt lite', 'title' => __('Delete', null, 'apostrophe'))) ?>
+        <a href="<?php echo url_for(sfConfig::get('aUserSubmittedMedia_cancel', '@homepage')) ?>">Cancel</a>
+    </div>
 </form>
