@@ -7,7 +7,8 @@
 
 <form enctype="multipart/form-data" method="POST" action="<?php url_for('@aUserSubmittedMedia_submit') ?>">
 	<?php echo $form ?>
-	<div class="a-form-row">
-		<input type="submit" value="Save" /> <a href="<?php echo url_for(sfConfig::get('aUserSubmittedMedia_cancel', '@homepage')) ?>">Cancel</a>
+	<div class="a-ui a-form-row submit">
+		<input class="a-btn a-submit big" type="submit" value="Submit" />
+    <a class="a-btn icon alt a-cancel big" href="<?php echo url_for(sfConfig::get('aUserSubmittedMedia_cancel', '@homepage')) ?>"><span class="icon"></span>Cancel</a>
 	</div>
 </form>
